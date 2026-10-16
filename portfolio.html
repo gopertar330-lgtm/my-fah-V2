@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fah - 3D Portfolio Showcase</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Kanit -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif, system-ui;
+            padding-top: 70px;
+            background-color: #080c14; /* ธีมพื้นหลังมืดสไตล์ 3D เดียวกับหน้าหลัก */
+            color: #e2e8f0;
+        }
+
+        /* Navbar สไตล์เดียวกับหน้าหลัก */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* หัวข้อหลัก */
+        h2.text-primary {
+            color: #38bdf8 !important;
+            border-color: rgba(56, 189, 248, 0.3) !important;
+        }
+
+        /* การ์ดหมวดหมู่ผลงาน */
+        .card {
+            background-color: #111827 !important;
+            color: #f8fafc !important;
+            border: 1px solid rgba(56, 189, 248, 0.15) !important;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Card Header แต่ละหมวด ให้โทนสีพรีเมียม */
+        .card-header {
+            font-weight: bold;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* สีหัวการ์ดแยกตามหมวด */
+        .header-model { background: linear-gradient(135deg, #0284c7, #3b82f6) !important; color: #fff; }
+        .header-render { background: linear-gradient(135deg, #7c3aed, #a855f7) !important; color: #fff; }
+        .header-anim { background: linear-gradient(135deg, #0d9488, #14b8a6) !important; color: #fff; }
+
+        /* ปรับแต่งปุ่มเลื่อน Carousel ให้เท่และกดง่าย */
+        .carousel-control-prev, .carousel-control-next {
+            width: 8%;
+            z-index: 10 !important;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(56, 189, 248, 0.7);
+            border-radius: 50%;
+            padding: 22px;
+            background-size: 50%;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        /* ปุ่มย้อนกลับหน้า Resume */
+        .btn-outline-light {
+            border-color: rgba(56, 189, 248, 0.5);
+            color: #38bdf8;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #38bdf8;
+            color: #080c14;
+            border-color: #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-info" href="fah.html"><i class="fa-solid fa-cube me-2"></i>Fah - Portfolio</a>
+            <div class="ms-auto">
+                <!-- ปุ่มกดกลับหน้า Resume -->
+                <a href="fah.html" class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold">
+                    <i class="fa-solid fa-arrow-left me-1"></i> กลับหน้าประวัติ (Resume)
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section: รวบรวมผลงาน 3D แบ่งเป็น 3 หมวด -->
+    <main class="container my-5 pt-3">
+        <h2 class="text-primary fw-bold border-bottom pb-3 mb-5">
+            <i class="fa-solid fa-cubes me-2"></i>ผลงาน 3D & Animation (Blender Showcase)
+        </h2>
+
+        <!-- ================= 1. หมวดโมเดล 3D นิ่ง (3D Model Slider) ================= -->
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-header header-model">
+                <i class="fa-solid fa-cube me-2"></i>1. หมวดโมเดล 3D (3D Models - หมุนดูรอบๆ ได้)
+            </div>
+            <div class="card-body p-4">
+                <!-- Carousel 1 -->
+                <div id="carousel3DModels" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-inner">
+                        
+                        <!-- ชิ้นงาน 3D ที่ 1 -->
+                        <div class="carousel-item active">
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                                <iframe title="3D Model 1" frameborder="0" allowfullscreen allow="autoplay; fullscreen" src="https://sketchfab.com/models/9078e6b7b4f74b238d16bde5958ccd23/embed"></iframe>
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Character Model - Ori</h5>
+                                <p class="text-light opacity-75 small">โมเดลตัวละคร 3D แสดงโครงสร้าง Topology และการกาง UV</p>
+                            </div>
+                        </div>
+
+                        <!-- ชิ้นงาน 3D ที่ 2 -->
+                        <div class="carousel-item">
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                                <iframe title="3D Model 2" frameborder="0" allowfullscreen allow="autoplay; fullscreen" src="https://sketchfab.com/models/YOUR_STATIC_MODEL_ID_2/embed"></iframe>
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Character Model - Susi</h5>
+                                <p class="text-light opacity-75 small">โมเดลตัวละคร 3D สามารถกดลากเพื่อหมุนดูได้รอบทิศทาง</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ปุ่มเลื่อน -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel3DModels" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel3DModels" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= 2. หมวดรูปภาพ Render (Gallery Slider) ================= -->
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-header header-render">
+                <i class="fa-solid fa-image me-2"></i>2. หมวดภาพ Render (Render Showcase)
+            </div>
+            <div class="card-body p-4">
+                <!-- Carousel 2 -->
+                <div id="carouselRenderImages" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <!-- รูปที่ 1 -->
+                        <div class="carousel-item active">
+                            <div class="text-center">
+                                <img src="ori2.png" 
+                                class="d-block w-100 rounded object-fit-contain shadow" 
+                                style="max-height: 450px; background-color: #0b0f19;" 
+                                alt="Model Render Showcase 1">
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Character Design Showcase - 01</h5>
+                                <p class="text-light opacity-75 small">เน้นแสดงการจัดแสงและรูปทรงตัวละคร</p>
+                            </div>
+                        </div>
+
+                        <!-- รูปที่ 2 -->
+                        <div class="carousel-item">
+                            <div class="text-center">
+                                <img src="ori3.png" 
+                                class="d-block w-100 rounded object-fit-contain shadow" 
+                                style="max-height: 450px; background-color: #0b0f19;" 
+                                alt="Model Render Showcase 2">
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Character Design Showcase - 02</h5>
+                                <p class="text-light opacity-75 small">เน้นแสดงมุมมองและรายละเอียดของชุดตัวละคร</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ปุ่มเลื่อน -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselRenderImages" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselRenderImages" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= 3. หมวดอนิเมชัน (Animation Slider) ================= -->
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-header header-anim">
+                <i class="fa-solid fa-person-running me-2"></i>3. หมวดอนิเมชันขยับได้ (3D Animations)
+            </div>
+            <div class="card-body p-4">
+                <!-- Carousel 3 -->
+                <div id="carouselAnimations" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-inner">
+
+                        <!-- อนิเมชันที่ 1 -->
+                        <div class="carousel-item active">
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                                <iframe title="3D Animation 1" frameborder="0" allowfullscreen allow="autoplay; fullscreen" src="https://sketchfab.com/models/b3e560749bfe45cdb27f2379ef4d43d9/embed"></iframe>
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Animation Ori</h5>
+                                <p class="text-light opacity-75 small">โมเดลพร้อมโครงกระดูก (Rig) และการใส่ท่าทางขยับแบบวนลูป</p>
+                            </div>
+                        </div>
+
+                        <!-- อนิเมชันที่ 2 -->
+                        <div class="carousel-item">
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                                <iframe title="3D Animation 2" frameborder="0" allowfullscreen allow="autoplay; fullscreen" src="https://sketchfab.com/models/YOUR_ANIMATED_MODEL_ID_2/embed"></iframe>
+                            </div>
+                            <div class="text-center mt-3">
+                                <h5 class="fw-bold text-info">Walk Cycle Test</h5>
+                                <p class="text-light opacity-75 small">ทดสอบการอนิเมทการเดินของตัวละคร</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ปุ่มเลื่อน -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselAnimations" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselAnimations" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5 border-top border-secondary">
+        <div class="container">
+            <small class="text-light opacity-75">&copy; 2569 Nopparat Srisuk - Panyapiwat Institute of Management</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
